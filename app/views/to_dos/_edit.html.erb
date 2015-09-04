@@ -1,0 +1,43 @@
+<h1>Editing to_do</h1>
+
+<%= form_for@to_do, :url => { :controller => "to_dos",:action => "update" }, :method => :put,:remote=>true, :validate=>true do |f|%>
+<% if @to_do.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@to_do.errors.count, "error") %> prohibited this blog from being saved:</h2>
+  <ul>
+    <% @to_do.errors.full_messages.each do |msg| %>
+    <li>
+      <%= msg %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="input-control text span6 float-left">
+      
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br />
+    <%= f.text_field :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+   </div>
+
+<%end%>
+        
+
+<%= link_to 'Show', @to_do %> |
+<%= link_to 'Back', to_dos_path %>

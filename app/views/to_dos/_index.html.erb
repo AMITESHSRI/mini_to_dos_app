@@ -1,0 +1,21 @@
+<% @to_dos.each do |to_do| %>
+
+  <tr>
+  
+    <td>&nbsp;&nbsp;<%= to_do.title %></td>
+    <td>&nbsp;&nbsp;<%= to_do.desc %></td>
+    <td >&nbsp;&nbsp;<%= to_do.date.try(:strftime,"%b %d, %Y") %></td>
+    <td>&nbsp;&nbsp;<%= link_to 'Show', to_do %></td>
+    <td><%= link_to 'Edit', edit_to_do_path(to_do),:remote=>true %></td>
+    <td><%= link_to 'Destroy', to_do, method: :delete, data: { confirm: 'Are you sure?' },:remote=>true %></td>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <% if to_do.try(:status) == true %>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= link_to 'Done',featured_status_to_dos_path(:id=>to_do.id,:f_status=>0),:remote=>true,:style=>" color: green ;"%></td>
+	<% else%>
+	<td>
+    &nbsp;&nbsp;
+	<%= link_to 'NotDone',featured_status_to_dos_path(:id=>to_do.id,:f_status=>1),:remote=>true ,:style=>"color: #FF0000;"%></td>
+	<%end%>
+  </tr>
+<% end %>

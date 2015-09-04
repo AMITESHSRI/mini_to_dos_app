@@ -1,0 +1,27 @@
+<h1 style="text-align: center;position: relative;right:400px;">To-do's  List </h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Desc</th>
+   
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>Status</th>
+  </tr>
+  <div class="create_todo">
+  <%= render 'to_dos/index' %>
+  </div>
+
+
+</table>
+
+<div class="new_form"> 
+  
+</div>
+
+<br />
+
+<%= link_to 'New To do', new_to_do_path ,:remote=>true%>
